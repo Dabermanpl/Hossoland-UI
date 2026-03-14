@@ -1,5 +1,5 @@
 import React from 'react';
-import { MapPin, Clock, ChevronRight, Drumstick } from 'lucide-react';
+import { MapPin, Clock, ChevronRight, Beef } from 'lucide-react';
 import './CouponItem.css';
 
 interface CouponItemProps {
@@ -15,7 +15,7 @@ const CouponItem: React.FC<CouponItemProps> = ({ title, description, location, v
     <div className="coupon-item">
       <div className="coupon-top">
         <div className="coupon-icon-bg">
-          <Drumstick size={24} color="var(--color-orange-gold-drop)" />
+          <Beef size={24} color="var(--color-orange-gold-drop)" />
         </div>
         <div className="coupon-info">
           <h3 className="coupon-title">{title}</h3>
