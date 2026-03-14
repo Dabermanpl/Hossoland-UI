@@ -60,7 +60,7 @@
 }
 
 .points-container {
-  background: var(--color-black-05);
+  background: rgba(0, 0, 0, 0.1);
   border-radius: var(--radius-lg);
   padding: 16px;
   display: flex;
@@ -96,13 +96,19 @@
 }
 
 .trophy-badge {
-  background: var(--color-black-05);
+  background: rgba(0, 0, 0, 0.1);
   width: 56px;
   height: 56px;
   border-radius: var(--radius-70);
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.badge-svg-icon {
+  width: 26px;
+  height: 26px;
+  display: block;
 }
 
 .progress-bar-bg {

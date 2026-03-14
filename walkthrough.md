@@ -13,10 +13,10 @@ Zgodnie z prośbą o "nowy projekt", zaimplementowałem od podstaw ekran AR Scan
 - **Karta punktowa**: Posiada teraz delikatne tło `black-05` i zaokrąglenie `radius-lg`.
 - **Wartości**: Punkty (50) są wyświetlane w kolorze pomarańczowym (`--color-orange-sun`).
 - **Nagłówek (Sticky & Collapsing)**: Nagłówek płynnie wsuwa się z góry ekranu przy starcie. Podczas przewijania sekcja z punktami (44:1130) zwija się, pozostawiając stały pasek tytułowy (44:1122), co optymalizuje przestrzeń na ekranie.
-- **Nagłówek (Refinement 21:249)**: Podmieniono tymczasowe ikony CSS/Lucide na oryginalne zasoby SVG bezpośrednio z projektu Figma. Tytuły "Skaner AR" oraz "Moje kupony" są teraz idealnie wyrównane z nowymi ikonami o rozmiarze 22x22px.
+- **Nagłówek (Fix 21:248)**: Zaktualizowano wszystkie ikony do oryginalnych SVG z Figma, w tym ikony w okrągłych badge'ach (trofeum dla AR, bilet dla Kuponów). Zwiększono przezroczystość tła elementów na karcie punktowej do 10% (`rgba(0,0,0,0.1)`), co nadaje im głębię zgodną z designem.
   
-  ![Skaner AR Header](file:///Users/emilianstorta/.gemini/antigravity/brain/9cf55b58-7beb-423c-805e-4d0ae80c09f6/skaner_ar_header_check_1773520740416.png)
-  ![Kupony Header](file:///Users/emilianstorta/.gemini/antigravity/brain/9cf55b58-7beb-423c-805e-4d0ae80c09f6/kupony_header_check_1773520810090.png)
+  ![Skaner AR Header Final](/Users/emilianstorta/.gemini/antigravity/brain/9cf55b58-7beb-423c-805e-4d0ae80c09f6/skaner_ar_header_1773521253247.png)
+  ![Kupony Header Final](/Users/emilianstorta/.gemini/antigravity/brain/9cf55b58-7beb-423c-805e-4d0ae80c09f6/kupony_header_1773521267275.png)
 
 - **Animacja**: Pasek postępu płynnie animuje się (0% -> 25%) tylko raz przy starcie aplikacji.
 

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Trophy, Ticket } from 'lucide-react';
 import './TopHeader.css';
 
 interface TopHeaderProps {
@@ -25,14 +24,16 @@ const TopHeader: React.FC<TopHeaderProps> = ({ view = 'scan', animate = false })
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scannerIcon = "http://localhost:3845/assets/598eeed88eaf721f35321849cbe13a790d161e53.svg";
-  const couponsIcon = "http://localhost:3845/assets/c2d688fe42fa8efa669a1b98373859eb82f7afa7.svg";
+  const scannerTitleIcon = "http://localhost:3845/assets/d54033ddcf0e0d43f591789b426edae0695c89bd.svg";
+  const couponsTitleIcon = "http://localhost:3845/assets/c2d688fe42fa8efa669a1b98373859eb82f7afa7.svg";
+  const scannerBadgeIcon = "http://localhost:3845/assets/8ad90e50969c3d8b79763b59ad77034298a6e6e3.svg";
+  const couponsBadgeIcon = "http://localhost:3845/assets/fd698df9d5f9fbcf1387f77dd612862103d9ceb6.svg";
 
   return (
     <div className={`top-header ${animate ? 'animate-start' : ''} ${isScrolled ? 'collapsed' : ''}`}>
       <div className="header-title">
         <div className="title-icon-wrapper">
-          <img src={isCoupons ? couponsIcon : scannerIcon} alt="" className="header-svg-icon" />
+          <img src={isCoupons ? couponsTitleIcon : scannerTitleIcon} alt="" className="header-svg-icon" />
         </div>
         <h1 className="text-h1">{isCoupons ? 'Moje kupony' : 'Skaner AR'}</h1>
       </div>
@@ -49,11 +50,11 @@ const TopHeader: React.FC<TopHeaderProps> = ({ view = 'scan', animate = false })
             </p>
           </div>
           <div className="trophy-badge">
-            {isCoupons ? (
-              <Ticket size={26} color="var(--color-orange-gold-drop)" />
-            ) : (
-              <Trophy size={26} color="var(--color-orange-gold-drop)" />
-            )}
+            <img 
+              src={isCoupons ? couponsBadgeIcon : scannerBadgeIcon} 
+              alt="" 
+              className="badge-svg-icon" 
+            />
           </div>
         </div>
         
