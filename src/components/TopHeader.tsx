@@ -25,19 +25,15 @@ const TopHeader: React.FC<TopHeaderProps> = ({ view = 'scan', animate = false })
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const scannerIcon = "http://localhost:3845/assets/598eeed88eaf721f35321849cbe13a790d161e53.svg";
+  const couponsIcon = "http://localhost:3845/assets/c2d688fe42fa8efa669a1b98373859eb82f7afa7.svg";
+
   return (
     <div className={`top-header ${animate ? 'animate-start' : ''} ${isScrolled ? 'collapsed' : ''}`}>
       <div className="header-title">
-        {isCoupons ? (
-          <Ticket size={22} color="white" />
-        ) : (
-          <div className="scanner-icon-mini">
-            <div className="corner tl"></div>
-            <div className="corner tr"></div>
-            <div className="corner bl"></div>
-            <div className="corner br"></div>
-          </div>
-        )}
+        <div className="title-icon-wrapper">
+          <img src={isCoupons ? couponsIcon : scannerIcon} alt="" className="header-svg-icon" />
+        </div>
         <h1 className="text-h1">{isCoupons ? 'Moje kupony' : 'Skaner AR'}</h1>
       </div>
       
