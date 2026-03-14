@@ -1,0 +1,41 @@
+.how-it-works {
+  background: white;
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.steps-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.hiw-step {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.step-number {
+  background-color: var(--color-grey-light);
+  color: var(--color-cyan-primary);
+  width: 24px;
+  height: 24px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.step-text {
+  font-size: 14px;
+  color: var(--color-text-muted);
+  line-height: 20px;
+}

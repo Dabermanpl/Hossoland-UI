@@ -1,0 +1,101 @@
+.ar-item {
+  background: white;
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: var(--shadow-sm);
+  width: 100%;
+}
+
+.ar-item:not(.found) {
+  opacity: 0.95;
+}
+
+.item-icon-bg {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.bg-cyan { background-color: var(--color-cyan-primary); }
+.bg-gray { background-color: #f3f4f6; }
+
+.item-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.item-title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.item-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-azure-secondary);
+}
+
+.found-badge {
+  background-color: var(--color-grey-light);
+  color: var(--color-cyan-primary);
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.item-location {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--color-text-gray);
+  font-size: 12px;
+}
+
+.item-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.item-points {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-orange-gold-drop);
+}
+
+.go-button {
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--color-cyan-primary);
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0;
+}
+
+.go-button span {
+  border-bottom: 1.5px solid currentColor;
+  padding-bottom: 1px;
+}

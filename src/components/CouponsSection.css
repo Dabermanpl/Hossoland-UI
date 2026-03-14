@@ -1,0 +1,11 @@
+.coupons-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.coupons-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}

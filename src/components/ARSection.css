@@ -1,0 +1,11 @@
+.ar-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ar-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}

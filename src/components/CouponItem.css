@@ -1,0 +1,125 @@
+.coupon-item {
+  background: white;
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+.coupon-top {
+  padding: 20px 16px;
+  display: flex;
+  gap: 12px;
+}
+
+.coupon-icon-bg {
+  background: var(--color-grey-93);
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.coupon-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.coupon-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--color-cyan-primary);
+}
+
+.coupon-description {
+  font-size: 12px;
+  color: #666;
+  line-height: 1.4;
+  margin-bottom: 4px;
+}
+
+.coupon-meta {
+  display: flex;
+  gap: 12px;
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  color: #888;
+}
+
+.coupon-divider {
+  height: 20px;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.dash-line {
+  width: 100%;
+  height: 1px;
+  border-bottom: 1px dashed var(--color-grey-93);
+  margin: 0 16px;
+}
+
+.notch {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: var(--color-grey-93);
+  border-radius: 50%;
+}
+
+.notch.left {
+  left: -10px;
+}
+
+.notch.right {
+  right: -10px;
+}
+
+.coupon-bottom {
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+}
+
+.code-label {
+  font-size: 11px;
+  color: #aaa;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 2px;
+}
+
+.coupon-code {
+  font-size: 20px;
+  font-weight: 900;
+  color: var(--color-orange-gold-drop);
+  letter-spacing: 1px;
+}
+
+.use-button {
+  background: var(--color-orange-gold-drop);
+  color: white;
+  border: none;
+  border-radius: var(--radius-lg);
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+}

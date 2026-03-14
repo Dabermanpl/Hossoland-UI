@@ -1,0 +1,146 @@
+.scan-card {
+  background-color: var(--color-cyan-primary);
+  border-radius: 24px;
+  height: 152px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.scan-card:hover {
+  transform: scale(0.98);
+}
+
+.scan-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--color-cyan-primary);
+  opacity: 0.3;
+}
+
+.scan-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+}
+
+.scan-icon-wrapper {
+  position: relative;
+  width: 56px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4px;
+}
+
+.scan-brackets {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.scan-brackets::before,
+.scan-brackets::after,
+.scan-brackets-bottom::before,
+.scan-brackets-bottom::after {
+  content: '';
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border: 2px solid white;
+  animation: bracket-pulse 2s infinite ease-in-out;
+}
+
+@keyframes bracket-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.95); }
+}
+
+/* Top-left */
+.scan-brackets::before {
+  top: 0;
+  left: 0;
+  border-right: none;
+  border-bottom: none;
+  border-top-left-radius: 4px;
+}
+
+/* Top-right */
+.scan-brackets::after {
+  top: 0;
+  right: 0;
+  border-left: none;
+  border-bottom: none;
+  border-top-right-radius: 4px;
+}
+
+/* Bottom brackets using separate elements or pseudo-elements of a child */
+.scan-brackets-bottom::before,
+.scan-brackets-bottom::after {
+  content: '';
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border: 2px solid white;
+}
+
+.scan-brackets-bottom::before {
+  bottom: 0;
+  left: 0;
+  border-right: none;
+  border-top: none;
+  border-bottom-left-radius: 4px;
+}
+
+.scan-brackets-bottom::after {
+  bottom: 0;
+  right: 0;
+  border-left: none;
+  border-top: none;
+  border-bottom-right-radius: 4px;
+}
+
+.scan-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to right, transparent, white, transparent);
+  box-shadow: 0 0 15px 2px rgba(255, 255, 255, 0.8);
+  animation: scan-move 3s infinite ease-in-out;
+  z-index: 2;
+}
+
+@keyframes scan-move {
+  0% { top: 0; opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
+
+.scan-title {
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.scan-subtitle {
+  color: var(--color-white-70);
+  font-size: 12px;
+  font-weight: 500;
+}

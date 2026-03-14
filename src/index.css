@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --color-cyan-primary: #016977;
+  --color-azure-secondary: #143852;
+  --color-orange-accent: #EF8207;
+  --color-orange-sun: #F7A609;
+  --color-orange-gold-drop: #EF7D00;
+  --color-orange-buttercup-79: rgba(247, 166, 18, 0.79);
+  --color-azure-cerulean: #0B8DCE;
+  --color-red-crimson: #DC143C;
+  --color-grey-93: #EEEEEE;
+  --color-grey-light: #EEEEEE;
+  --color-grey-dark: #333333;
+  --color-white-70: rgba(255, 255, 255, 0.7);
+  --color-black-60: rgba(0, 0, 0, 0.6);
+  --color-black-05: rgba(0, 0, 0, 0.05);
+  --color-bg-light: #f9fafb;
+  --color-yellow-accent: #ffdf20;
+  
+  --shadow-sm: 0px 2px 8px 0px rgba(0, 0, 0, 0.06);
+  --shadow-nav: 0px -2px 12px 0px rgba(0, 0, 0, 0.06);
+  
+  --spacing-xs: 8px;
+  --spacing-sm: 12px;
+  --spacing-md: 16px;
+  --spacing-lg: 20px;
+
+  --radius-sm: 14px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 25px;
+  --radius-70: 70px;
+  --radius-full: 9999px;
+
+  font-family: 'Inter', sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: var(--color-text-dark);
+  background-color: var(--color-bg-light);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+.app-container {
+  max-width: 480px;
+  margin: 0 auto;
+  min-height: 100vh;
+  position: relative;
+  background: var(--color-grey-93);
+  overflow-x: hidden;
+}
+
+.main-content {
+  padding: 20px 16px 120px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Typography Utilities */
+.text-h1 { font-size: 20px; font-weight: 700; color: white; }
+.text-h2 { font-size: 14px; font-weight: 600; color: var(--color-text-gray); text-transform: uppercase; letter-spacing: 0.35px; }
+.text-h3 { font-size: 14px; font-weight: 700; color: var(--color-text-dark); }
+.text-body { font-size: 14px; color: var(--color-text-muted); }
+.text-xs { font-size: 12px; }
+
+/* Components Layout */
+section {
+  padding: 20px 16px;
+}
+
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.items-center { align-items: center; }
+.justify-between { justify-content: space-between; }
+.gap-sm { gap: 8px; }
+.gap-md { gap: 12px; }
+.gap-lg { gap: 16px; }
+.gap-xl { gap: 20px; }
