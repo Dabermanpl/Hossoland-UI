@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Trophy, Ticket } from 'lucide-react';
 import './TopHeader.css';
 
@@ -9,9 +9,24 @@ interface TopHeaderProps {
 
 const TopHeader: React.FC<TopHeaderProps> = ({ view = 'scan', animate = false }) => {
   const isCoupons = view === 'coupons';
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Zwijaj nagłówek po przewinięciu o więcej niż 20px
+      if (window.scrollY > 20) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <div className={`top-header ${animate ? 'animate-start' : ''}`}>
+    <div className={`top-header ${animate ? 'animate-start' : ''} ${isScrolled ? 'collapsed' : ''}`}>
       <div className="header-title">
         {isCoupons ? (
           <Ticket size={22} color="white" />

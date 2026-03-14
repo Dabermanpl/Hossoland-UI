@@ -12,7 +12,8 @@ Zgodnie z prośbą o "nowy projekt", zaimplementowałem od podstaw ekran AR Scan
 - **Kształt**: Nagłówek posiada teraz charakterystyczne zaokrąglenia dolnych krawędzi (`radius-lg`), dzięki czemu miękko nachodzi na tło aplikacji (zgodnie z 21:248).
 - **Karta punktowa**: Posiada teraz delikatne tło `black-05` i zaokrąglenie `radius-lg`.
 - **Wartości**: Punkty (50) są wyświetlane w kolorze pomarańczowym (`--color-orange-sun`).
-- **Animacja**: Nagłówek płynnie wsuwa się z góry ekranu (slide-down) przy załadowaniu aplikacji. Następnie pasek postępu animuje się (0% -> 25%). Dzięki użyciu `useEffect` animacje nie powtarzają się przy przełączaniu zakładek.
+- **Nagłówek (Sticky & Collapsing)**: Nagłówek płynnie wsuwa się z góry ekranu przy starcie. Podczas przewijania sekcja z punktami (44:1130) zwija się, pozostawiając stały pasek tytułowy (44:1122), co optymalizuje przestrzeń na ekranie.
+- **Animacja**: Pasek postępu płynnie animuje się (0% -> 25%) tylko raz przy starcie aplikacji.
 
 ### 5. Animacja Skanowania (43:441)
 - **Linia Skanująca**: Płynny ruch pionowy z efektem "glow" (poświata) i gradientem, imitujący aktywny skaner.
