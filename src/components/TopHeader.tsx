@@ -58,8 +58,8 @@ const TopHeader: React.FC<TopHeaderProps> = ({ view = 'scan', animate = false })
           </div>
         </div>
         
-        <div className="progress-bar-bg">
-          <div className={`progress-bar-fill ${animate ? 'animate-start' : ''}`}></div>
+        <div className="progress-bar-bg" key={`bg-${view}`}>
+          <div className={`progress-bar-fill ${animate ? 'animate-start' : ''}`} key={`fill-${view}`}></div>
         </div>
         
         <p className="progress-hint">

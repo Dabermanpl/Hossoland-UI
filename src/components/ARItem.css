@@ -42,11 +42,11 @@
 .item-name {
   font-size: 14px;
   font-weight: 600;
-  color: var(--color-azure-secondary);
+  color: #143852; /* color/azure/20 / Elephant */
 }
 
 .found-badge {
-  background-color: var(--color-grey-light);
+  background-color: #eee; /* color/grey/93 */
   color: var(--color-cyan-primary);
   font-size: 12px;
   font-weight: 500;
@@ -61,7 +61,7 @@
   display: flex;
   align-items: center;
   gap: 4px;
-  color: var(--color-text-gray);
+  color: #333; /* color/grey/20 / Mine Shaft */
   font-size: 12px;
 }
 
@@ -78,7 +78,7 @@
   gap: 4px;
   font-size: 14px;
   font-weight: 700;
-  color: var(--color-orange-gold-drop);
+  color: rgba(239, 130, 8, 0.85); /* color/orange/48-85% / Tahiti Gold 85% */
 }
 
 .go-button {
