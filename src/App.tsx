@@ -8,6 +8,7 @@ import BottomNav from './components/BottomNav';
 import TicketsSection from './components/TicketsSection';
 import PaymentSuccessSection from './components/PaymentSuccessSection';
 import ProfileSection from './components/ProfileSection';
+import MapSection from './components/MapSection';
 import './index.css';
 
 function App() {
@@ -71,6 +72,8 @@ function App() {
             <HowItWorks />
           </>
         );
+      case 'map':
+        return <MapSection />;
       default:
         return (
           <div style={{ padding: '20px', textAlign: 'center', color: '#666' }}>

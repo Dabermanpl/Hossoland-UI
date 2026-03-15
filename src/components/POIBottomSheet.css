@@ -1,0 +1,120 @@
+.sheet-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(20, 56, 82, 0.2);
+  backdrop-filter: blur(2px);
+  z-index: 100;
+  display: flex;
+  align-items: flex-end;
+}
+
+.poi-bottom-sheet {
+  width: 100%;
+  background: white;
+  border-radius: 32px 32px 0 0;
+  padding: 12px 20px 32px;
+  position: relative;
+  box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.1);
+  animation: sheet-slide-up 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+@keyframes sheet-slide-up {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+.sheet-handle {
+  width: 40px;
+  height: 4px;
+  background: #eee;
+  border-radius: 2px;
+  margin: 0 auto 16px;
+  cursor: pointer;
+}
+
+.close-sheet-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: #f1f5f9;
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #143852;
+  cursor: pointer;
+}
+
+.sheet-body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.zone-tag {
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--color-cyan-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.poi-name {
+  font-size: 24px;
+  font-weight: 700;
+  color: #143852;
+  margin-top: 4px;
+}
+
+.poi-quick-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.quick-stat {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #f8fafc;
+  padding: 8px 12px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #143852;
+}
+
+.poi-description {
+  font-size: 14px;
+  color: #333;
+  line-height: 1.6;
+  opacity: 0.8;
+}
+
+.navigate-cta-btn {
+  width: 100%;
+  background-color: var(--color-primary-sun);
+  color: white;
+  border: none;
+  padding: 16px;
+  border-radius: 16px;
+  font-size: 16px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(247, 166, 9, 0.2);
+  margin-top: 8px;
+}
+
+.navigate-cta-btn:active {
+  transform: scale(0.98);
+}
