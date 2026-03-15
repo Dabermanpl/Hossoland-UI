@@ -14,10 +14,26 @@ const POIBottomSheet: React.FC<POIBottomSheetProps> = ({ poi, onClose }) => {
   return (
     <div className="sheet-overlay" onClick={onClose}>
       <div className="poi-bottom-sheet" onClick={(e) => e.stopPropagation()}>
-        <div className="sheet-handle" onClick={onClose}></div>
-        <button className="close-sheet-btn" onClick={onClose}>
-          <X size={20} />
-        </button>
+        <div className="sheet-hero">
+          {poi.imageUrl ? (
+            <img 
+              src={poi.imageUrl} 
+              alt={poi.name} 
+              className="poi-hero-image"
+              onError={(e) => {
+                const target = e.target as HTMLImageElement;
+                target.style.display = 'none';
+                target.parentElement!.classList.add('image-fallback');
+              }}
+            />
+          ) : (
+            <div className="sheet-hero-placeholder" />
+          )}
+          <div className="sheet-handle" onClick={onClose}></div>
+          <button className="close-sheet-btn" onClick={onClose}>
+            <X size={20} />
+          </button>
+        </div>
 
         <div className="sheet-body">
           <div className="sheet-header">
