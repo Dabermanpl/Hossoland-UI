@@ -42,3 +42,31 @@
   height: 100%;
   pointer-events: none;
 }
+
+.cluster-marker {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  pointer-events: auto;
+  cursor: pointer;
+  z-index: 60;
+}
+
+.cluster-content {
+  width: 32px;
+  height: 32px;
+  background-color: var(--color-primary-elephant);
+  border: 2px solid white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 800;
+  font-size: 13px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease;
+}
+
+.cluster-marker:hover .cluster-content {
+  transform: scale(1.1);
+}

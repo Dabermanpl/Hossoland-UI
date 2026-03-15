@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useMemo } from 'react';
 import './MapSection.css';
 import MapFilterBar from './MapFilterBar';
 import POIMarker from './POIMarker';
@@ -7,48 +7,88 @@ import MapControls from './MapControls';
 import { hossolandPOIs } from '../data/poiData';
 import type { IParkPOI, POICategory } from '../data/poiData';
 
+// Constants for clustering
+const CLUSTER_RADIUS = 60; // Pixels
+
 const MapSection: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<POICategory | 'all'>('all');
-  const [userHeight, setUserHeight] = useState<number>(150); // Default 150cm (adult)
+  const [userHeight, setUserHeight] = useState<number>(150);
   const [selectedPOI, setSelectedPOI] = useState<IParkPOI | null>(null);
   const [zoomLevel, setZoomLevel] = useState<number>(1);
   const viewportRef = useRef<HTMLDivElement>(null);
 
-  const filteredPOIs = hossolandPOIs.filter(poi => {
-    // Category filter
-    if (activeCategory !== 'all' && poi.category !== activeCategory) {
-      if (activeCategory === 'attraction' && poi.category === 'attraction_kids') {
-        // Include kids attractions when "Attractions" is selected
-      } else {
-        return false;
+  // Filter POIs based on category and height
+  const filteredPOIs = useMemo(() => {
+    return hossolandPOIs.filter(poi => {
+      if (activeCategory !== 'all' && poi.category !== activeCategory) {
+        if (!(activeCategory === 'attraction' && poi.category === 'attraction_kids')) {
+          return false;
+        }
       }
+      if (poi.category === 'attraction' || poi.category === 'attraction_kids') {
+        const minRequired = poi.minHeightWithGuardian || poi.minHeightAlone || 0;
+        if (userHeight < minRequired) return false;
+      }
+      return true;
+    });
+  }, [activeCategory, userHeight]);
+
+  // Determine marker state based on zoomLevel
+  const markerDetailLevel = useMemo(() => {
+    if (zoomLevel >= 1.5) return 'full';
+    if (zoomLevel >= 1.0) return 'icon';
+    return 'dot';
+  }, [zoomLevel]);
+
+  // Simple clustering logic: grouping nearby markers if zoom is low
+  const clusters = useMemo(() => {
+    if (zoomLevel >= 1.5) {
+      return filteredPOIs.map(poi => ({ isCluster: false, poi, id: poi.id }));
     }
 
-    // Height filter (only for attractions)
-    if (poi.category === 'attraction' || poi.category === 'attraction_kids') {
-      const minRequired = poi.minHeightWithGuardian || poi.minHeightAlone || 0;
-      if (userHeight < minRequired) return false;
-    }
+    const result: any[] = [];
+    const processed = new Set<string>();
 
-    return true;
-  });
+    filteredPOIs.forEach(poi => {
+      if (processed.has(poi.id)) return;
 
-  const handleZoomIn = () => {
-    setZoomLevel(prev => Math.min(prev + 0.25, 2.5));
-  };
+      const nearby = filteredPOIs.filter(other => {
+        if (processed.has(other.id)) return false;
+        const dist = Math.sqrt(Math.pow(poi.x - other.x, 2) + Math.pow(poi.y - other.y, 2));
+        return dist < CLUSTER_RADIUS / zoomLevel;
+      });
 
-  const handleZoomOut = () => {
-    setZoomLevel(prev => Math.max(prev - 0.25, 0.5));
-  };
+      if (nearby.length > 1) {
+        // Create a cluster
+        const avgX = nearby.reduce((sum, p) => sum + p.x, 0) / nearby.length;
+        const avgY = nearby.reduce((sum, p) => sum + p.y, 0) / nearby.length;
+        result.push({
+          isCluster: true,
+          id: `cluster-${nearby[0].id}`,
+          x: avgX,
+          y: avgY,
+          count: nearby.length,
+          points: nearby
+        });
+        nearby.forEach(p => processed.has(p.id) || processed.add(p.id));
+      } else {
+        result.push({ isCluster: false, poi, id: poi.id });
+        processed.add(poi.id);
+      }
+    });
 
+    return result;
+  }, [filteredPOIs, zoomLevel]);
+
+  const handleZoomIn = () => setZoomLevel(prev => Math.min(prev + 0.25, 2.5));
+  const handleZoomOut = () => setZoomLevel(prev => Math.max(prev - 0.25, 0.5));
+  
   const handleRecenter = () => {
     setZoomLevel(1);
     if (viewportRef.current) {
-      const container = viewportRef.current;
-      // Scroll to center of the map
-      container.scrollTo({
-        left: (1470 - container.clientWidth) / 2,
-        top: (836 - container.clientHeight) / 2,
+      viewportRef.current.scrollTo({
+        left: (1470 - viewportRef.current.clientWidth) / 2,
+        top: (836 - viewportRef.current.clientHeight) / 2,
         behavior: 'smooth'
       });
     }
@@ -59,53 +99,43 @@ const MapSection: React.FC = () => {
       <div className="map-viewport" ref={viewportRef}>
         <div 
           className="map-container"
-          style={{ 
-            transform: `scale(${zoomLevel})`,
-            transformOrigin: '0 0'
-          }}
+          style={{ transform: `scale(${zoomLevel})`, transformOrigin: '0 0' }}
         >
-          <img 
-            src="/Hossoland-UI/park-map.png" 
-            alt="Park Map" 
-            className="park-map-image"
-            onError={(e) => {
-              const target = e.target as HTMLImageElement;
-              if (target.src.includes('/Hossoland-UI/')) {
-                // If the prefixed path fails (local dev), try the root path
-                target.src = '/park-map.png';
-              }
-            }}
-          />
+          <img src="/Hossoland-UI/park-map.png" alt="Map" className="park-map-image" 
+            onError={(e) => { (e.target as HTMLImageElement).src = '/park-map.png'; }} />
+          
           <div className="markers-layer">
-            {filteredPOIs.map(poi => (
-              <POIMarker
-                key={poi.id}
-                poi={poi}
-                onClick={() => setSelectedPOI(poi)}
-                isActive={selectedPOI?.id === poi.id}
-              />
-            ))}
+            {clusters.map(node => {
+              if (node.isCluster) {
+                return (
+                  <div 
+                    key={node.id} 
+                    className="cluster-marker"
+                    style={{ left: `${node.x}px`, top: `${node.y}px` }}
+                    onClick={() => setZoomLevel(prev => Math.min(prev + 0.5, 2.5))}
+                  >
+                    <div className="cluster-content">{node.count}</div>
+                  </div>
+                );
+              }
+              return (
+                <POIMarker
+                  key={node.poi.id}
+                  poi={node.poi}
+                  onClick={() => setSelectedPOI(node.poi)}
+                  isActive={selectedPOI?.id === node.poi.id}
+                  detailLevel={markerDetailLevel}
+                />
+              );
+            })}
           </div>
         </div>
       </div>
 
-      <MapFilterBar
-        activeCategory={activeCategory}
-        onCategoryChange={setActiveCategory}
-        userHeight={userHeight}
-        onHeightChange={setUserHeight}
-      />
-
-      <MapControls 
-        onZoomIn={handleZoomIn}
-        onZoomOut={handleZoomOut}
-        onRecenter={handleRecenter}
-      />
-
-      <POIBottomSheet
-        poi={selectedPOI}
-        onClose={() => setSelectedPOI(null)}
-      />
+      <MapFilterBar activeCategory={activeCategory} onCategoryChange={setActiveCategory}
+        userHeight={userHeight} onHeightChange={setUserHeight} />
+      <MapControls onZoomIn={handleZoomIn} onZoomOut={handleZoomOut} onRecenter={handleRecenter} />
+      <POIBottomSheet poi={selectedPOI} onClose={() => setSelectedPOI(null)} />
     </div>
   );
 };

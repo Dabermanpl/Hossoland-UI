@@ -3,27 +3,31 @@ import { FerrisWheel, Utensils, Info, Camera, MapPin } from 'lucide-react';
 import type { IParkPOI } from '../data/poiData';
 import './POIMarker.css';
 
+export type MarkerDetailLevel = 'full' | 'icon' | 'dot';
+
 interface POIMarkerProps {
   poi: IParkPOI;
   onClick: () => void;
   isActive: boolean;
+  detailLevel: MarkerDetailLevel;
 }
 
-const POIMarker: React.FC<POIMarkerProps> = ({ poi, onClick, isActive }) => {
+const POIMarker: React.FC<POIMarkerProps> = ({ poi, onClick, isActive, detailLevel }) => {
   const getIcon = () => {
+    const iconSize = detailLevel === 'icon' ? 16 : 20;
     switch (poi.category) {
       case 'attraction':
       case 'attraction_kids':
-        return <FerrisWheel size={20} />;
+        return <FerrisWheel size={iconSize} />;
       case 'food':
-        return <Utensils size={20} />;
+        return <Utensils size={iconSize} />;
       case 'ar_node':
-        return <Camera size={20} />;
+        return <Camera size={iconSize} />;
       case 'toilet':
       case 'info':
-        return <Info size={20} />;
+        return <Info size={iconSize} />;
       default:
-        return <MapPin size={20} />;
+        return <MapPin size={iconSize} />;
     }
   };
 
@@ -44,10 +48,29 @@ const POIMarker: React.FC<POIMarkerProps> = ({ poi, onClick, isActive }) => {
     }
   };
 
+  // Higher z-index for attractions and AR nodes
+  const getZIndex = () => {
+    if (isActive) return 100;
+    if (poi.category === 'attraction' || poi.category === 'ar_node') return 50;
+    return 10;
+  };
+
+  if (detailLevel === 'dot') {
+    return (
+      <div 
+        className={`poi-marker dot-mode ${getThemeClass()} ${isActive ? 'active' : ''}`}
+        style={{ left: `${poi.x}px`, top: `${poi.y}px`, zIndex: getZIndex() }}
+        onClick={(e) => { e.stopPropagation(); onClick(); }}
+      >
+        <div className="marker-dot" title={poi.name} />
+      </div>
+    );
+  }
+
   return (
     <div 
-      className={`poi-marker ${getThemeClass()} ${isActive ? 'active' : ''}`}
-      style={{ left: `${poi.x}px`, top: `${poi.y}px` }}
+      className={`poi-marker ${detailLevel}-mode ${getThemeClass()} ${isActive ? 'active' : ''}`}
+      style={{ left: `${poi.x}px`, top: `${poi.y}px`, zIndex: getZIndex() }}
       onClick={(e) => {
         e.stopPropagation();
         onClick();
@@ -56,7 +79,7 @@ const POIMarker: React.FC<POIMarkerProps> = ({ poi, onClick, isActive }) => {
       <div className="marker-container">
         <div className="marker-pin">
           {getIcon()}
-          {poi.status === 'open' && poi.waitTimeMinutes !== undefined && poi.waitTimeMinutes > 0 && (
+          {detailLevel === 'full' && poi.status === 'open' && poi.waitTimeMinutes !== undefined && poi.waitTimeMinutes > 0 && (
             <div className="marker-wait-time">
               {poi.waitTimeMinutes} min
             </div>
