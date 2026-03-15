@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Map, Ticket, User } from 'lucide-react';
-import './BottomNav.css';
+import { Map, User } from 'lucide-react';
 import ScanIcon from './ScanIcon';
+import CouponIcon from './CouponIcon';
 
 interface BottomNavProps {
   onTabChange?: (tabId: string) => void;
@@ -19,7 +19,7 @@ const BottomNav: React.FC<BottomNavProps> = ({ onTabChange }) => {
 
   const tabs = [
     { id: 'map', icon: Map, label: 'Mapa' },
-    { id: 'coupons', icon: Ticket, label: 'Kupony' },
+    { id: 'coupons', icon: CouponIcon, label: 'Kupony' },
     { id: 'scan', icon: ScanIcon, label: 'Skaner AR' },
     { id: 'profile', icon: User, label: 'Profil' },
   ];
@@ -40,6 +40,11 @@ const BottomNav: React.FC<BottomNavProps> = ({ onTabChange }) => {
                   <ScanIcon 
                     size={20} 
                     color={activeTab === 'scan' ? 'var(--color-cyan-primary)' : 'white'} 
+                  />
+                ) : tab.id === 'coupons' ? (
+                  <CouponIcon 
+                    size={20} 
+                    color={activeTab === 'coupons' ? 'var(--color-cyan-primary)' : 'white'} 
                   />
                 ) : (
                   // @ts-ignore
