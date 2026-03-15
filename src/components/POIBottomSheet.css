@@ -1,32 +1,37 @@
 .sheet-overlay {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(20, 56, 82, 0.2);
-  backdrop-filter: blur(2px);
-  z-index: 100;
+  background: white;
+  z-index: 1100;
   display: flex;
-  align-items: flex-end;
+  flex-direction: column;
 }
 
 .poi-bottom-sheet {
   width: 100%;
+  height: 100%;
   background: white;
-  border-radius: 32px 32px 0 0;
-  padding: 0 0 32px; /* Bottom padding only */
+  display: flex;
+  flex-direction: column;
   position: relative;
-  box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.1);
-  animation: sheet-slide-up 0.3s cubic-bezier(0.19, 1, 0.22, 1);
-  overflow: hidden;
+  animation: sheet-fade-in 0.3s ease-out;
+}
+
+.sheet-content {
+  flex: 1;
+  overflow-y: auto;
+  padding-bottom: 100px; /* Space for sticky footer */
 }
 
 .sheet-hero {
   position: relative;
   width: 100%;
-  height: 200px;
+  height: 42vh;
   background: var(--color-grey-light);
+  flex-shrink: 0;
 }
 
 .poi-hero-image {
@@ -38,7 +43,7 @@
 .sheet-hero-placeholder, .image-fallback {
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%);
+  background: linear-gradient(135deg, #143852 0%, #016977 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -46,111 +51,123 @@
 
 .image-fallback::after {
   content: '📸';
-  font-size: 40px;
-  opacity: 0.3;
+  font-size: 48px;
+  opacity: 0.5;
 }
 
-@keyframes sheet-slide-up {
-  from { transform: translateY(100%); }
-  to { transform: translateY(0); }
-}
-
-.sheet-handle {
-  position: absolute;
-  top: 12px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 40px;
-  height: 4px;
-  background: rgba(255, 255, 255, 0.8);
-  border-radius: 2px;
-  cursor: pointer;
-  z-index: 2;
+@keyframes sheet-fade-in {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .close-sheet-btn {
   position: absolute;
   top: 16px;
   right: 16px;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border: none;
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #143852;
   cursor: pointer;
-  z-index: 2;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  z-index: 10;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transition: all 0.2s ease;
+}
+
+.close-sheet-btn:active {
+  transform: scale(0.9);
 }
 
 .sheet-body {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  padding: 20px 20px 0;
+  gap: 20px;
+  padding: 24px;
 }
 
 .zone-tag {
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 800;
   color: var(--color-cyan-primary);
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.8px;
 }
 
 .poi-name {
-  font-size: 24px;
-  font-weight: 700;
+  font-size: 28px;
+  font-weight: 800;
   color: #143852;
   margin-top: 4px;
+  line-height: 1.2;
 }
 
 .poi-quick-stats {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 12px;
+  margin: 8px 0;
 }
 
 .quick-stat {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 12px;
   background: #f8fafc;
-  padding: 8px 12px;
-  border-radius: 12px;
-  font-size: 13px;
-  font-weight: 600;
+  padding: 12px 16px;
+  border-radius: 14px;
+  font-size: 14px;
+  font-weight: 700;
   color: #143852;
+  border: 1px solid rgba(0,0,0,0.03);
+}
+
+.quick-stat svg {
+  color: var(--color-cyan-primary);
 }
 
 .poi-description {
-  font-size: 14px;
-  color: #333;
-  line-height: 1.6;
-  opacity: 0.8;
+  font-size: 15px;
+  color: #444;
+  line-height: 1.7;
+  margin-top: 4px;
+}
+
+.sheet-sticky-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: white;
+  padding: 20px 24px 32px;
+  box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.08);
+  z-index: 20;
 }
 
 .navigate-cta-btn {
   width: 100%;
   background-color: var(--color-primary-sun);
-  color: white;
+  color: #282828;
   border: none;
-  padding: 16px;
+  padding: 18px;
   border-radius: 16px;
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 800;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 12px;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(247, 166, 9, 0.2);
-  margin-top: 8px;
+  transition: all 0.2s ease;
 }
 
 .navigate-cta-btn:active {
   transform: scale(0.98);
+  filter: brightness(0.95);
 }
