@@ -4,13 +4,10 @@
   left: 0;
   right: 0;
   bottom: 0;
-  height: 100%;
-  width: 100%;
   background: white;
   z-index: 1100;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
 }
 
 .poi-bottom-sheet {
@@ -268,12 +265,12 @@
 
 /* Sticky Footer */
 .sheet-sticky-footer {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
   background: white;
-  padding: 20px 24px calc(env(safe-area-inset-bottom, 24px) + 16px);
+  padding: 20px 24px 32px;
   box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.08);
   z-index: 20;
 }
