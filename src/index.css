@@ -87,6 +87,18 @@ body {
   padding-bottom: 100px;
 }
 
+.main-content.full-screen {
+  padding: 0;
+  gap: 0;
+  max-width: none;
+  margin: 0;
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 /* Typography Utilities */
 .text-h1 { font-size: 20px; font-weight: 700; color: white; }
 .text-h2 { font-size: 14px; font-weight: 600; color: var(--color-text-gray); text-transform: uppercase; letter-spacing: 0.35px; }

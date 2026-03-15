@@ -58,7 +58,7 @@ const POIMarker: React.FC<POIMarkerProps> = ({ poi, onClick, isActive }) => {
           {getIcon()}
           {poi.status === 'open' && poi.waitTimeMinutes !== undefined && poi.waitTimeMinutes > 0 && (
             <div className="marker-wait-time">
-              {poi.waitTimeMinutes}
+              {poi.waitTimeMinutes} min
             </div>
           )}
         </div>

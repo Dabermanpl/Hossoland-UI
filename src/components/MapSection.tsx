@@ -35,15 +35,22 @@ const MapSection: React.FC = () => {
       <div className="map-viewport">
         <div className="map-container">
           <img 
-            src="/park-map.png" 
+            src="/Hossoland-UI/park-map.png" 
             alt="Park Map" 
             className="park-map-image"
+            onError={(e) => {
+              const target = e.target as HTMLImageElement;
+              if (target.src.includes('/Hossoland-UI/')) {
+                // If the prefixed path fails (local dev), try the root path
+                target.src = '/park-map.png';
+              }
+            }}
           />
           <div className="markers-layer">
             {filteredPOIs.map(poi => (
-              <POIMarker 
-                key={poi.id} 
-                poi={poi} 
+              <POIMarker
+                key={poi.id}
+                poi={poi}
                 onClick={() => setSelectedPOI(poi)}
                 isActive={selectedPOI?.id === poi.id}
               />
@@ -52,15 +59,15 @@ const MapSection: React.FC = () => {
         </div>
       </div>
 
-      <MapFilterBar 
+      <MapFilterBar
         activeCategory={activeCategory}
         onCategoryChange={setActiveCategory}
         userHeight={userHeight}
         onHeightChange={setUserHeight}
       />
 
-      <POIBottomSheet 
-        poi={selectedPOI} 
+      <POIBottomSheet
+        poi={selectedPOI}
         onClose={() => setSelectedPOI(null)}
       />
     </div>

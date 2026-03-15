@@ -1,7 +1,11 @@
 .map-section {
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   width: 100%;
-  height: calc(100vh - 80px); /* Adjust based on BottomNav height */
+  height: 100%;
   overflow: hidden;
   background-color: #f1f5f9;
 }
@@ -16,15 +20,16 @@
 
 .map-container {
   position: relative;
-  width: 1000px; /* Base width for markers coordinate system */
-  height: 1000px;
+  width: 1470px;
+  height: 836px;
 }
 
 .park-map-image {
   width: 100%;
   height: 100%;
   display: block;
-  object-fit: cover;
+  object-fit: contain;
+  background-color: #143852;
 }
 
 .markers-layer {

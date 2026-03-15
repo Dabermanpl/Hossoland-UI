@@ -85,11 +85,11 @@ function App() {
 
   return (
     <div className="app-container">
-      {activeTab !== 'profile' && (
+      {activeTab !== 'profile' && activeTab !== 'map' && (
         <TopHeader key="global-header" view={activeTab} animate={headerAnimate} />
       )}
       
-      <main className="main-content">
+      <main className={`main-content ${activeTab === 'map' ? 'full-screen' : ''}`}>
         {renderContent()}
       </main>
       
