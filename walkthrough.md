@@ -30,6 +30,27 @@ Ostatnia faza prac skupiła się na osiągnięciu absolutnej wierności projekto
 - **Animacja Skanowania**: Linia skanująca z efektem poświaty oraz pulsujące narożniki (brackets) SVG tworzą premium feeling.
 - **Hierarchia**: Nieodnalezione przedmioty mają subtelne 95% opacity, co pozwala użytkownikowi skupić się na postępie.
 
+### 6. Nowe Ikony Skanowania
+Zgodnie z prośbą, zastąpiono wszystkie ikony "scan" nowym, spójnym modelem SVG (brackets).
+
+**Lokalizacje zmian:**
+- **ScanCard**: Ikona w centralnej części karty skanowania.
+- **TopHeader**: Ikona obok tytułu "Skaner AR".
+- **BottomNav**: Ikona w dolnym pasku nawigacji (obsługuje zmianę koloru Cyjan/Biały).
+
+**Weryfikacja wizualna:**
+````carousel
+![Nowe ikony w widoku Skaner AR](/Users/emilianstorta/.gemini/antigravity/brain/9cf55b58-7beb-423c-805e-4d0ae80c09f6/initial_view_1773566056506.png)
+<!-- slide -->
+![Ikona nieaktywna w widoku Kuponów](/Users/emilianstorta/.gemini/antigravity/brain/9cf55b58-7beb-423c-805e-4d0ae80c09f6/kupony_view_inactive_scan_icon_1773566083256.png)
+````
+
+### 7. Favicon (HL Sygnet)
+Wdrożono nową ikonę witryny (favicon.svg) opartą na modelu sygnetu `57:432`. Ikona jest w formacie wektorowym, co zapewnia ostrość na wszystkich urządzeniach.
+
+**Weryfikacja w przeglądarce:**
+![Weryfikacja favicony w przeglądarce](/Users/emilianstorta/.gemini/antigravity/brain/9cf55b58-7beb-423c-805e-4d0ae80c09f6/favicon_svg_content_1773566643540.png)
+
 ---
 
 ## Repozytorium GitHub
