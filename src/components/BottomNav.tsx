@@ -49,7 +49,6 @@ const BottomNav: React.FC<BottomNavProps> = ({ onTabChange }) => {
                     color={activeTab === tab.id ? 'var(--color-cyan-primary)' : 'white'} 
                   />
                 ) : (
-                  // @ts-expect-error lucide icons typing
                   <tab.icon size={20} color={activeTab === tab.id ? 'var(--color-cyan-primary)' : 'white'} />
                 )}
                 <span>{tab.label}</span>
