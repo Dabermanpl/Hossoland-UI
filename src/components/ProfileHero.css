@@ -35,7 +35,7 @@
 
 .guest-id {
   font-size: 14px;
-  opacity: 0.7;
+  color: var(--color-white-70);
   margin: 4px 0 0;
 }
 
@@ -71,12 +71,12 @@
 .stat-value {
   font-size: 18px;
   font-weight: 700;
-  color: var(--color-primary-sun);
+  color: var(--color-orange-gold-drop);
 }
 
 .stat-label {
   font-size: 11px;
-  opacity: 0.7;
+  color: var(--color-white-70);
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }

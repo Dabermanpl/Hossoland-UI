@@ -44,15 +44,14 @@
 
 .badge-title {
   font-size: 16px;
-  font-weight: 700;
-  color: var(--color-primary-elephant);
+  font-weight: 600;
+  color: #143852;
   margin: 0;
 }
 
 .badge-desc {
   font-size: 12px;
-  color: var(--color-neutral-mine-shaft);
-  opacity: 0.7;
+  color: #333;
   margin: 4px 0 0;
   line-height: 1.4;
 }
@@ -74,7 +73,7 @@
 
 .progress-bar-fill {
   height: 100%;
-  background: var(--color-primary-sun);
+  background: var(--color-orange-gold-drop);
   border-radius: 3px;
   transition: width 0.3s ease;
 }
@@ -82,7 +81,7 @@
 .progress-text {
   font-size: 11px;
   font-weight: 600;
-  color: var(--color-primary-elephant);
+  color: #143852;
   min-width: 24px;
   text-align: right;
 }

@@ -4,9 +4,10 @@
 
 .section-title {
   font-size: 14px;
-  font-weight: 800;
-  color: var(--color-primary-elephant);
-  letter-spacing: 1px;
+  font-weight: 600;
+  color: #143852;
+  text-transform: uppercase;
+  letter-spacing: 0.35px;
   margin: 0 0 16px 4px;
 }
 
@@ -37,8 +38,8 @@
 
 .cta-title {
   font-size: 18px;
-  font-weight: 700;
-  color: var(--color-primary-elephant);
+  font-weight: 600;
+  color: #143852;
   margin: 0;
 }
 

@@ -48,15 +48,15 @@
 
 .settings-title {
   font-size: 15px;
-  font-weight: 700;
-  color: var(--color-primary-elephant);
+  font-weight: 600;
+  color: #143852;
   margin: 0;
 }
 
 .settings-subtitle {
   font-size: 12px;
-  color: var(--color-neutral-mine-shaft);
-  opacity: 0.6;
+  color: #333;
+  opacity: 0.8;
   margin: 2px 0 0;
 }
 
