@@ -1,0 +1,13 @@
+.profile-section {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  background: var(--color-neutral-gallery);
+}
+
+.profile-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-bottom: 20px;
+}

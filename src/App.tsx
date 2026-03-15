@@ -7,6 +7,7 @@ import HowItWorks from './components/HowItWorks';
 import BottomNav from './components/BottomNav';
 import TicketsSection from './components/TicketsSection';
 import PaymentSuccessSection from './components/PaymentSuccessSection';
+import ProfileSection from './components/ProfileSection';
 import './index.css';
 
 function App() {
@@ -56,6 +57,8 @@ function App() {
     }
 
     switch (activeTab) {
+      case 'profile':
+        return <ProfileSection onBuyTickets={() => setActiveTab('tickets')} />;
       case 'tickets':
         return <TicketsSection onCheckout={handleCheckout} />;
       case 'coupons':

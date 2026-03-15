@@ -1,0 +1,88 @@
+.badge-card {
+  background: white;
+  padding: 16px;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease;
+}
+
+.badge-card:active {
+  transform: scale(0.98);
+}
+
+.badge-card.locked {
+  opacity: 0.8;
+}
+
+.badge-icon-container {
+  width: 48px;
+  height: 48px;
+  background: var(--color-neutral-gallery);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border: 1px solid var(--color-neutral-gallery);
+}
+
+.badge-card.earned .badge-icon-container {
+  background: rgba(247, 166, 9, 0.1);
+  border-color: rgba(247, 166, 9, 0.2);
+}
+
+.earned-check {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background: white;
+  border-radius: 50%;
+}
+
+.badge-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--color-primary-elephant);
+  margin: 0;
+}
+
+.badge-desc {
+  font-size: 12px;
+  color: var(--color-neutral-mine-shaft);
+  opacity: 0.7;
+  margin: 4px 0 0;
+  line-height: 1.4;
+}
+
+.badge-progress {
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.progress-bar-container {
+  flex: 1;
+  height: 6px;
+  background: var(--color-neutral-gallery);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: var(--color-primary-sun);
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+.progress-text {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--color-primary-elephant);
+  min-width: 24px;
+  text-align: right;
+}
