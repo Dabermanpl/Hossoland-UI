@@ -1,0 +1,39 @@
+.map-controls {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 25;
+}
+
+.control-btn {
+  width: 48px;
+  height: 48px;
+  background-color: white;
+  border: 1px solid var(--color-neutral-gallery, #eeeeee);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-cyan-primary);
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+  padding: 0;
+}
+
+.control-btn:active {
+  transform: scale(0.95);
+  background-color: #f8fafc;
+}
+
+.recenter-btn {
+  margin-top: 8px;
+}
+
+.control-btn svg {
+  stroke-width: 2.5px;
+}

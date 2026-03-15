@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import './MapSection.css';
 import MapFilterBar from './MapFilterBar';
 import POIMarker from './POIMarker';
 import POIBottomSheet from './POIBottomSheet';
+import MapControls from './MapControls';
 import { hossolandPOIs } from '../data/poiData';
 import type { IParkPOI, POICategory } from '../data/poiData';
 
@@ -10,6 +11,8 @@ const MapSection: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<POICategory | 'all'>('all');
   const [userHeight, setUserHeight] = useState<number>(150); // Default 150cm (adult)
   const [selectedPOI, setSelectedPOI] = useState<IParkPOI | null>(null);
+  const [zoomLevel, setZoomLevel] = useState<number>(1);
+  const viewportRef = useRef<HTMLDivElement>(null);
 
   const filteredPOIs = hossolandPOIs.filter(poi => {
     // Category filter
@@ -30,10 +33,37 @@ const MapSection: React.FC = () => {
     return true;
   });
 
+  const handleZoomIn = () => {
+    setZoomLevel(prev => Math.min(prev + 0.25, 2.5));
+  };
+
+  const handleZoomOut = () => {
+    setZoomLevel(prev => Math.max(prev - 0.25, 0.5));
+  };
+
+  const handleRecenter = () => {
+    setZoomLevel(1);
+    if (viewportRef.current) {
+      const container = viewportRef.current;
+      // Scroll to center of the map
+      container.scrollTo({
+        left: (1470 - container.clientWidth) / 2,
+        top: (836 - container.clientHeight) / 2,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <div className="map-section">
-      <div className="map-viewport">
-        <div className="map-container">
+      <div className="map-viewport" ref={viewportRef}>
+        <div 
+          className="map-container"
+          style={{ 
+            transform: `scale(${zoomLevel})`,
+            transformOrigin: '0 0'
+          }}
+        >
           <img 
             src="/Hossoland-UI/park-map.png" 
             alt="Park Map" 
@@ -64,6 +94,12 @@ const MapSection: React.FC = () => {
         onCategoryChange={setActiveCategory}
         userHeight={userHeight}
         onHeightChange={setUserHeight}
+      />
+
+      <MapControls 
+        onZoomIn={handleZoomIn}
+        onZoomOut={handleZoomOut}
+        onRecenter={handleRecenter}
       />
 
       <POIBottomSheet
