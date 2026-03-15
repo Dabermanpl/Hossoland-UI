@@ -1,0 +1,33 @@
+.ticket-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  padding: 16px;
+  border-radius: 16px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.ticket-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ticket-info h3 {
+  margin: 0;
+  line-height: 1.2;
+}
+
+.ticket-info p {
+  margin: 0;
+  opacity: 0.8;
+}
+
+.ticket-info span {
+  margin-top: 4px;
+  color: var(--color-primary-sun);
+  font-weight: 700;
+}

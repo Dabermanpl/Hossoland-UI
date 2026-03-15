@@ -18,6 +18,16 @@
   --color-bg-light: #f9fafb;
   --color-yellow-accent: #ffdf20;
   
+  /* New Tickets Design Tokens */
+  --color-primary-elephant: #143852;
+  --color-neutral-mine-shaft: #333333;
+  --color-primary-sun: #F7A609;
+  
+  --font-heading-bold: 700 20px 'Inter', sans-serif;
+  --font-heading-regular: 400 18px 'Inter', sans-serif;
+  --font-body-regular: 400 14px 'Inter', sans-serif;
+  --font-body-medium: 500 14px 'Inter', sans-serif;
+  
   --shadow-sm: 0px 2px 8px 0px rgba(0, 0, 0, 0.06);
   --shadow-nav: 0px -2px 12px 0px rgba(0, 0, 0, 0.06);
   
@@ -83,6 +93,12 @@ body {
 .text-h3 { font-size: 14px; font-weight: 700; color: var(--color-text-dark); }
 .text-body { font-size: 14px; color: var(--color-text-muted); }
 .text-xs { font-size: 12px; }
+
+/* Tickets Typography */
+.font-heading-bold { font: var(--font-heading-bold); color: var(--color-primary-elephant); }
+.font-heading-regular { font: var(--font-heading-regular); }
+.font-body-regular { font: var(--font-body-regular); color: var(--color-neutral-mine-shaft); }
+.font-body-medium { font: var(--font-body-medium); }
 
 /* Components Layout */
 section {

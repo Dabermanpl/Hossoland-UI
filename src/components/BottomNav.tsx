@@ -20,6 +20,7 @@ const BottomNav: React.FC<BottomNavProps> = ({ onTabChange }) => {
 
   const tabs = [
     { id: 'map', icon: Map, label: 'Mapa' },
+    { id: 'tickets', icon: CouponIcon, label: 'Bilety' },
     { id: 'coupons', icon: CouponIcon, label: 'Kupony' },
     { id: 'scan', icon: ScanIcon, label: 'Skaner AR' },
     { id: 'profile', icon: User, label: 'Profil' },
@@ -42,13 +43,13 @@ const BottomNav: React.FC<BottomNavProps> = ({ onTabChange }) => {
                     size={20} 
                     color={activeTab === 'scan' ? 'var(--color-cyan-primary)' : 'white'} 
                   />
-                ) : tab.id === 'coupons' ? (
+                ) : tab.id === 'coupons' || tab.id === 'tickets' ? (
                   <CouponIcon 
                     size={20} 
-                    color={activeTab === 'coupons' ? 'var(--color-cyan-primary)' : 'white'} 
+                    color={activeTab === tab.id ? 'var(--color-cyan-primary)' : 'white'} 
                   />
                 ) : (
-                  // @ts-ignore
+                  // @ts-expect-error lucide icons typing
                   <tab.icon size={20} color={activeTab === tab.id ? 'var(--color-cyan-primary)' : 'white'} />
                 )}
                 <span>{tab.label}</span>
