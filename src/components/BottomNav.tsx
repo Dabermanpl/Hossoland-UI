@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Map, User } from 'lucide-react';
+import './BottomNav.css';
 import ScanIcon from './ScanIcon';
 import CouponIcon from './CouponIcon';
 
