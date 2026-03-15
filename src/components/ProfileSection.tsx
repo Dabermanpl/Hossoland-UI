@@ -12,7 +12,7 @@ interface ProfileSectionProps {
 const ProfileSection: React.FC<ProfileSectionProps> = ({ onBuyTickets }) => {
   // Mock data for the profile
   const profileData = {
-    userName: 'Emilian Storta',
+    userName: 'Tomasz Nowak',
     guestId: 'HS-482910',
     points: 1250,
     badges: 1,

@@ -82,7 +82,9 @@ function App() {
 
   return (
     <div className="app-container">
-      <TopHeader key="global-header" view={activeTab} animate={headerAnimate} />
+      {activeTab !== 'profile' && (
+        <TopHeader key="global-header" view={activeTab} animate={headerAnimate} />
+      )}
       
       <main className="main-content">
         {renderContent()}
